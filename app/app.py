@@ -1,11 +1,11 @@
 '''
-	Contoh Deloyment untuk Domain Computer Vision (CV)
+	Deloyment untuk Domain Computer Vision (CV)
 	Orbit Future Academy - AI Mastery - KM Batch 3
-	Tim Deployment
 	2022
 '''
 
 # =[Modules dan Packages]========================
+
 from flask import Flask,render_template,request,jsonify
 from werkzeug.utils import secure_filename
 import pandas as pd
@@ -27,7 +27,7 @@ from keras_preprocessing.image import ImageDataGenerator
 from keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras import Model
-from PIL import Image
+from PIL import ImageChops
 from fungsi import make_model
 
 # =[Variabel Global]=============================
@@ -39,7 +39,8 @@ app.config['UPLOAD_EXTENSIONS']  = ['.jpg','.JPG']
 app.config['UPLOAD_PATH']        = './static/images/uploads/'
 
 model = None
-
+BATCH_SIZE = 32
+IMAGE_SIZE = (320, 320)
 dataset = './train/fire_dataset/'
 
 image_dir = Path(dataset)
@@ -90,7 +91,7 @@ def apiDeteksi():
 			test_image         = Image.open('.' + gambar_prediksi)
 			
 			# Mengubah Ukuran Gambar
-			test_image_resized = test_image.resize((32, 32))
+			test_image_resized = test_image.resize((224, 224))
 			
 			# Konversi Gambar ke Array
 			image_array        = np.array(test_image_resized)
@@ -123,10 +124,10 @@ if __name__ == '__main__':
 	# Load model yang telah ditraining
 	
 	model = make_model()
-	model.load_weights("model_fire_dataset.h5")
+	model.load_weights('model_fire_dataset (2).h5')
 
 	# Run Flask di localhost 
-	app.run(host="localhost", port=5000, debug=True)
+	app.run()
 	
 	
 

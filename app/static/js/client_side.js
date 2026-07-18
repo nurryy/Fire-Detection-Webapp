@@ -63,10 +63,10 @@ $(document).ready(function(){
   })
    
   // Fungsi untuk menampilkan hasil prediksi model
-  function generate_prediksi(data_prediksi, image_prediksi) {
+  function generate_prediksi(res_data_prediksi, res_gambar_prediksi) {
 	var str="";
 	
-	if(image_prediksi == "(none)") {
+	if(res_gambar_prediksi == "(none)") {
 		str += "<h3>Hasil Prediksi </h3>";
 		str += "<br>";
 		str += "<h4>Silahkan masukkan file gambar (.jpg)</h4>";
@@ -74,8 +74,8 @@ $(document).ready(function(){
 	else {
 		str += "<h3>Hasil Prediksi </h3>";
 		str += "<br>";
-		str += "<img src='" + image_prediksi + "' width=\"200\"></img>"
-		str += "<h3>" + data_prediksi + "</h3>";
+		str += "<img src='" + res_gambar_prediksi + "' width=\"200\"></img>"
+		str += "<h3>" + res_data_prediksi + "</h3>";
 	}
 	$("#hasil_prediksi").html(str);
   }  

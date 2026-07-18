@@ -95,7 +95,7 @@ fire-detection-webapp/
 Clone repository
 
 ```bash
-git clone https://github.com/USERNAME/fire-detection-webapp.git
+git clone https://github.com/USERNAME/Fire-Detection-Webapp.git
 ```
 
 Install dependencies
